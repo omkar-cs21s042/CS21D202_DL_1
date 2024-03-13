@@ -1,4 +1,5 @@
 import sys
+import numpy as np
 
 # command_line parameters
 wp = "myprojectname"
@@ -59,3 +60,31 @@ for i in range(1, n, 2):
         wp = sys.argv[i+1]
     elif sys.argv[i] == "-a" or "--activation":
         wp = sys.argv[i+1]
+
+
+
+# There are total L layers (does not include input layer) and L-1 hidden layers.
+# Each neuron has pre-activation "a" and activation "h".
+# If the size of layer is n then we have batch x n size vector of "a" and "h" for that layer
+# size(w1) = size(L1) x size(L0)
+# size(b1) = size(l1)
+
+class model:
+    def __init__(self, input_nodes, output_nodes):
+        nodes = []
+        for i in range(h+2):
+            if i == 0:
+                nodes.append(input_nodes)
+            elif i == h + 1:
+                nodes.append(output_nodes)
+            else:
+                nodes.append(sz)
+
+        weight = []
+        for i in range(1, h+2):
+            weight.append(np.zeros(nodes[i], nodes[i-1]))
+
+        bias = []
+        for i in range(1, h+2):
+            bias.append(nodes[i])
+
