@@ -62,29 +62,67 @@ for i in range(1, n, 2):
         wp = sys.argv[i+1]
 
 
+def sigmoid(x):
+    return 1/(1 + np.exp(-x))
+
+def cross_entropy(y, op):
+    return -np.sum(np.add(y,np.log(op)))
+
+def activationFunction(x):
+    if a == "sigmoid":
+        return sigmoid(x)
+
+def outputFunction(y, op):
+    if l == "cross_entropy":
+        return cross_entropy(y, op)
+
 
 # There are total L layers (does not include input layer) and L-1 hidden layers.
 # Each neuron has pre-activation "a" and activation "h".
 # If the size of layer is n then we have batch x n size vector of "a" and "h" for that layer
-# size(w1) = size(L1) x size(L0)
+# size(w1) = size(L0) x size(L1)
 # size(b1) = size(l1)
 
 class model:
     def __init__(self, input_nodes, output_nodes):
-        nodes = []
-        for i in range(h+2):
+        self.nodes = []
+        for i in range(h+3):
             if i == 0:
-                nodes.append(input_nodes)
-            elif i == h + 1:
-                nodes.append(output_nodes)
+                self.nodes.append(input_nodes)
+            elif i == h + 2:
+                self.nodes.append(output_nodes)
             else:
-                nodes.append(sz)
+                self.nodes.append(sz)
 
-        weight = []
-        for i in range(1, h+2):
-            weight.append(np.zeros(nodes[i], nodes[i-1]))
+        self.weight = []
+        for i in range(h+2):
+            self.weight.append(np.zeros(nodes[i], nodes[i+1]))
 
-        bias = []
-        for i in range(1, h+2):
-            bias.append(nodes[i])
+        self.bias = []
+        for i in range(h+2):
+            self.bias.append(nodes[i+1])
 
+    def feedForward(input_size):
+        for i in range(0, input_size, b):
+            a =[]
+            h =[]
+            y = []
+            start = i
+            end = i + b
+            if end > input_size:
+                end = input_size
+
+            x = data_input[start:end, :]
+            y = data_output[start:end]
+
+            # first layer
+            a.append(a.add(np.matmul(x, weight[0]),bias[0]))
+            h.append(activationFunction(a[0]))
+            for j in range(1, nhl):
+                a.append(np.add(np.matmul(h[len(h) - 1], weight[j]),bias[j]))
+                h.append(activationFunction(a[len(a)-1]))
+            a.append(np.add(np.matmul(h[len(h) - 1], weight[len(weight)-1]),bias[len(bias)-1]))
+            h.append(outputFunction(y, a[len(a)-1]))
+
+            self.a_batch.append(a)
+            self.h_batch.append(h)
