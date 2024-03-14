@@ -1,5 +1,6 @@
 import sys
 import numpy as np
+import math
 
 # command_line parameters
 wp = "myprojectname"
@@ -27,39 +28,42 @@ for i in range(1, n, 2):
     if sys.argv[i] == "-wp" or "--wandb_project":
         wp = sys.argv[i+1]
     elif sys.argv[i] == "-we" or "--wandb_entity":
-        wp = sys.argv[i+1]
+        we = sys.argv[i+1]
     elif sys.argv[i] == "-d" or "--dataset":
-        wp = sys.argv[i+1]
+        d = sys.argv[i+1]
     elif sys.argv[i] == "-e" or "--epochs":
-        wp = sys.argv[i+1]
+        e = int(sys.argv[i+1])
     elif sys.argv[i] == "-b" or "--batch_size":
-        wp = sys.argv[i+1]
+        b = int(sys.argv[i+1])
     elif sys.argv[i] == "-l" or "--loss":
-        wp = sys.argv[i+1]
+        l = sys.argv[i+1]
     elif sys.argv[i] == "-o" or "--optimizer":
-        wp = sys.argv[i+1]
+        o = sys.argv[i+1]
     elif sys.argv[i] == "-lr" or "--learning_rate":
-        wp = sys.argv[i+1]
+        lr = double(sys.argv[i+1])
     elif sys.argv[i] == "-m" or "--momentum":
-        wp = sys.argv[i+1]
+        m = double(sys.argv[i+1])
     elif sys.argv[i] == "-beta" or "--beta":
-        wp = sys.argv[i+1]
+        beta = double(sys.argv[i+1])
     elif sys.argv[i] == "-beta1" or "--beta1":
-        wp = sys.argv[i+1]
+        beta1 = double(sys.argv[i+1])
     elif sys.argv[i] == "-beta2" or "--beta2":
-        wp = sys.argv[i+1]
+        beta2 = double(sys.argv[i+1])
     elif sys.argv[i] == "-eps" or "--epsilon":
-        wp = sys.argv[i+1]
+        eps = double(sys.argv[i+1])
     elif sys.argv[i] == "-w_d" or "--weight_decay":
-        wp = sys.argv[i+1]
+        w_d = double(sys.argv[i+1])
     elif sys.argv[i] == "-w_i" or "--weight_init":
-        wp = sys.argv[i+1]
+        w_i = sys.argv[i+1]
     elif sys.argv[i] == "-nhl" or "--num_layers":
-        wp = sys.argv[i+1]
+        nhl = int(sys.argv[i+1])
     elif sys.argv[i] == "-sz" or "--hidden_size":
-        wp = sys.argv[i+1]
+        sz = int(sys.argv[i+1])
     elif sys.argv[i] == "-a" or "--activation":
-        wp = sys.argv[i+1]
+        a = sys.argv[i+1]
+
+
+
 
 
 def sigmoid(x):
@@ -97,19 +101,23 @@ class model:
         self.nodes = []
         for i in range(nhl+3):
             if i == 0:
-                self.nodes.append(input_nodes)
+                self.nodes.append(input_col_size)
             elif i == nhl + 2:
-                self.nodes.append(output_nodes)
+                self.nodes.append(output_col_size)
             else:
                 self.nodes.append(sz)
 
+        if w_i == "random":
+            init_range = 0.1
+        else:
+            init_range = math.sqrt(6/(input_col_size + output_col_size))
         self.weight = []
         for i in range(nhl+2):
-            self.weight.append(np.zeros(nodes[i], nodes[i+1]))
+            self.weight.append(np.random.uniform(-init_range, init_range, size = (self.nodes[i], self.nodes[i+1])))
 
         self.bias = []
         for i in range(nhl+2):
-            self.bias.append(np.zeros(nodes[i+1]))
+            self.bias.append(np.random.uniform(-init_range, init_range, size = (self.nodes[i+1])))
 
 
     def feedForward(self, x, y):
@@ -139,6 +147,110 @@ class model:
             del_b.append(np.sum(del_a[len(del_a)-1]), axis=0)  # doubt regarding dimension
             del_h.append(np.matmul(del_a[len(del_a) - 1], self.weight[i].transpose()))
             del_a.append(np.multiply(del_h[len(del_h) - 1], gFunction(A[i-1])))
+        return del_w.reverse(), del_b.reverse()
+
+    def sgd(self):
+        data_input_row, data_input_col = data_input.shape
+        for start in range(0, data_input_row, b):
+            end = start + b
+            if end > data_input_row:
+                end = data_input_row
+
+            x = data_input[start:end, : ]
+            y = data_output[start:end, : ]
+
+            A, h = self.feedForward(x, y)
+            del_w, del_b = self.backProp(A, h, y)
+
+    def momentum(self):
+        data_input_row, data_input_col = data_input.shape
+        prev_uw = []
+        prev_ub = []
+        for i in range(nhl + 2):
+            prev_uw.append(np.zeros(self.nodes[i], self.nodes[i+1]))
+            prev_ub.append(np.zeros(self.nodes[i+1]))
+
+        for epoch in range(e):
+            total_del_w = []
+            total_del_b = []
+            for i in range(nhl + 2):
+                total_del_w.append(np.zeros(self.nodes[i], self.nodes[i+1]))
+                total_del_b.append(np.zeros(self.nodes[i+1]))
+            for start in range(0, data_input_row, b):
+                end = start + b
+                if end > data_input_row:
+                    end = data_input_row
+
+                x = data_input[start:end, : ]
+                y = data_output[start:end, : ]
+
+                A, h = self.feedForward(x, y)
+                del_w, del_b = self.backProp(A, h, y)
+                for i in range(len(total_del_w)):
+                    total_del_w[i] = np.sum(total_del_w[i], del_w[i])
+                    total_del_b[i] = np.sum(total_del_b[i], del_b[i])
+
+            uw = []
+            ub = []
+            for i in range(nhl+2):
+                uw.append(np.add(np.multiply(prev_uw[i], m),np.multiply(total_del_w[i], lr)))
+                ub.append(np.add(np.multiply(prev_ub[i], m),np.multiply(total_del_b[i], lr)))
+                self.weight[i] = np.subtract(self.weight[i], uw[i])
+                self.bias[i] = np.subtract(self.bias[i], ub[i])
+
+            prev_uw = uw
+            prev_ub = ub
+
+
+    def nag(self):
+        data_input_row, data_input_col = data_input.shape
+        prev_vw = []
+        prev_vb = []
+        for i in range(nhl + 2):
+            prev_vw.append(np.zeros(self.nodes[i], self.nodes[i+1]))
+            prev_vb.append(np.zeros(self.nodes[i+1]))
+
+        for epoch in range(e):
+            v_w = []
+            v_b = []
+            total_del_w = []
+            total_del_b = []
+            for i in range(nhl + 2):
+                total_del_w.append(np.zeros(self.nodes[i], self.nodes[i+1]))
+                total_del_b.append(np.zeros(self.nodes[i+1]))
+                v_w.append(np.multiply(prev_vw[i], m))
+                v_b.append(np.multiply(prev_vb[i], m))
+
+            for start in range(0, data_input_row, b):
+                end = start + b
+                if end > data_input_row:
+                    end = data_input_row
+
+                x = data_input[start:end, : ]
+                y = data_output[start:end, : ]
+
+                A, h = self.feedForward(x, y)
+
+                for i in range(len(A)):
+                    A[i] = np.subtract(A[i], v_w[i])
+                    h[i] = np.subtract(h[i], v_b[i])
+
+                del_w, del_b = self.backProp(A, h, y)
+                for i in range(nhl + 2):
+                    total_del_w[i] = np.sum(total_del_w[i], del_w[i])
+                    total_del_b[i] = np.sum(total_del_b[i], del_b[i])
+
+            vw = []
+            vb = []
+            for i in range(nhl + 2):
+                vw.append(np.add(np.multiply(prev_vw[i], m), np.multiply(total_del_w, lr)))
+                vb.append(np.add(np.multiply(prev_vb[i], m), np.multiply(total_del_b, lr)))
+                self.weight[i] = np.subtract(self.weight[i], vw[i])
+                self.bias[i] = np.subtract(self.bias[i], vb[i])
+
+            prev_vw = vw 
+            prev_vb = vb
+
 
 
 
