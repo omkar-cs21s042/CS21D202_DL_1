@@ -109,59 +109,36 @@ class model:
 
         self.bias = []
         for i in range(nhl+2):
-            self.bias.append(np.zeros(1))
+            self.bias.append(np.zeros(nodes[i+1]))
 
-        self.a_batch = []
-        self.h_batch = []
 
-    def feedForward(self):
-        for i in range(0, input_size, b):
-            A =[]
-            h =[]
-            y = []
-            start = i
-            end = start + b
-            input_row_size, input_col_size = data_input.shape
-            if end > input_row_size:
-                end = input_row_size
+    def feedForward(self, x, y):
+        A =[]
+        h =[]
 
-            x = data_input[start:end, :]
-            y = data_output[start:end,:]
+        # first layer
+        A.append(np.add(np.matmul(x, self.weight[0]),self.bias[0]))
+        h.append(activationFunction(A[0]))
+        for j in range(1, nhl):
+            A.append(np.add(np.matmul(h[len(h) - 1], self.weight[j]), self.bias[j]))
+            h.append(activationFunction(A[len(A)-1]))
+        A.append(np.add(np.matmul(h[len(h) - 1], self.weight[len(self.weight)-1]), self.bias[len(self.bias)-1]))
+        h.append(outputFunction(y, A[len(A)-1]))
 
-            # first layer
-            A.append(np.add(np.matmul(x, self.weight[0]),self.bias[0]))
-            h.append(activationFunction(A[0]))
-            for j in range(1, nhl):
-                A.append(np.add(np.matmul(h[len(h) - 1], self.weight[j]), self.bias[j]))
-                h.append(activationFunction(A[len(A)-1]))
-            A.append(np.add(np.matmul(h[len(h) - 1], self.weight[len(self.weight)-1]), self.bias[len(self.bias)-1]))
-            h.append(outputFunction(y, A[len(A)-1]))
+        return A,h
 
-            self.a_batch.append(A)
-            self.h_batch.append(h)
 
-    def backProp(self):
-        for batch_no in range(len(self.a_batch)):
-            A = self.a_batch[batch_no]
-            h = self.h_batch[batch_no]
-            start = batch_no * b
-            end = start + b
-            input_row_size, input_col_size = data_input.shape
-            if end > input_row_size:
-                end = input_row_size
-
-            y = data_output[start:end,:]
-
-            del_a = []
-            del_w = []
-            del_b = []
-            del_h = []
-            del_a.append(np.multiply(np.subtract(y, h[len(h)-1]), -1))
-            for i in range(nhl + 1, -1, -1):
-                del_w.append(np.matmul(h[i-1].transpose(), del_a[len(del_a)-1]))
-                del_b.append(np.sum(del_a[len(del_a)-1]))  # doubt regarding dimension
-                del_h.append(np.matmul(del_a[len(del_a) - 1], self.weight[i].transpose()))
-                del_a.append(np.multiply(del_h[len(del_h) - 1], gFunction(A[i-1])))
+    def backProp(self, A, h, y):
+        del_a = []
+        del_w = []
+        del_b = []
+        del_h = []
+        del_a.append(np.multiply(np.subtract(y, h[len(h)-1]), -1))
+        for i in range(nhl + 1, -1, -1):
+            del_w.append(np.matmul(h[i-1].transpose(), del_a[len(del_a)-1]))
+            del_b.append(np.sum(del_a[len(del_a)-1]), axis=0)  # doubt regarding dimension
+            del_h.append(np.matmul(del_a[len(del_a) - 1], self.weight[i].transpose()))
+            del_a.append(np.multiply(del_h[len(del_h) - 1], gFunction(A[i-1])))
 
 
 
