@@ -65,8 +65,15 @@ for i in range(1, n, 2):
 def sigmoid(x):
     return 1/(1 + np.exp(-x))
 
+def dSigmoid(x):
+    return np.multiply(sigmoid(x),np.multiply(-1, np.subtract(sigmoid(x), 1)))
+
 def cross_entropy(y, op):
     return -np.sum(np.add(y,np.log(op)))
+
+def gFunction(x):
+    if a == "sigmoid":
+        return dSigmoid(x)
 
 def activationFunction(x):
     if a == "sigmoid":
@@ -84,45 +91,81 @@ def outputFunction(y, op):
 # size(b1) = size(l1)
 
 class model:
-    def __init__(self, input_nodes, output_nodes):
+    def __init__(self):
+        input_row_size, input_col_size = data_input.shape
+        output_row_size, output_col_size = data_output.shape
         self.nodes = []
-        for i in range(h+3):
+        for i in range(nhl+3):
             if i == 0:
                 self.nodes.append(input_nodes)
-            elif i == h + 2:
+            elif i == nhl + 2:
                 self.nodes.append(output_nodes)
             else:
                 self.nodes.append(sz)
 
         self.weight = []
-        for i in range(h+2):
+        for i in range(nhl+2):
             self.weight.append(np.zeros(nodes[i], nodes[i+1]))
 
         self.bias = []
-        for i in range(h+2):
-            self.bias.append(nodes[i+1])
+        for i in range(nhl+2):
+            self.bias.append(np.zeros(1))
 
-    def feedForward(input_size):
+        self.a_batch = []
+        self.h_batch = []
+
+    def feedForward(self):
         for i in range(0, input_size, b):
-            a =[]
+            A =[]
             h =[]
             y = []
             start = i
-            end = i + b
-            if end > input_size:
-                end = input_size
+            end = start + b
+            input_row_size, input_col_size = data_input.shape
+            if end > input_row_size:
+                end = input_row_size
 
             x = data_input[start:end, :]
-            y = data_output[start:end]
+            y = data_output[start:end,:]
 
             # first layer
-            a.append(a.add(np.matmul(x, weight[0]),bias[0]))
-            h.append(activationFunction(a[0]))
+            A.append(np.add(np.matmul(x, self.weight[0]),self.bias[0]))
+            h.append(activationFunction(A[0]))
             for j in range(1, nhl):
-                a.append(np.add(np.matmul(h[len(h) - 1], weight[j]),bias[j]))
-                h.append(activationFunction(a[len(a)-1]))
-            a.append(np.add(np.matmul(h[len(h) - 1], weight[len(weight)-1]),bias[len(bias)-1]))
-            h.append(outputFunction(y, a[len(a)-1]))
+                A.append(np.add(np.matmul(h[len(h) - 1], self.weight[j]), self.bias[j]))
+                h.append(activationFunction(A[len(A)-1]))
+            A.append(np.add(np.matmul(h[len(h) - 1], self.weight[len(self.weight)-1]), self.bias[len(self.bias)-1]))
+            h.append(outputFunction(y, A[len(A)-1]))
 
-            self.a_batch.append(a)
+            self.a_batch.append(A)
             self.h_batch.append(h)
+
+    def backProp(self):
+        for batch_no in range(len(self.a_batch)):
+            A = self.a_batch[batch_no]
+            h = self.h_batch[batch_no]
+            start = batch_no * b
+            end = start + b
+            input_row_size, input_col_size = data_input.shape
+            if end > input_row_size:
+                end = input_row_size
+
+            y = data_output[start:end,:]
+
+            del_a = []
+            del_w = []
+            del_b = []
+            del_h = []
+            del_a.append(np.multiply(np.subtract(y, h[len(h)-1]), -1))
+            for i in range(nhl + 1, -1, -1):
+                del_w.append(np.matmul(h[i-1].transpose(), del_a[len(del_a)-1]))
+                del_b.append(np.sum(del_a[len(del_a)-1]))  # doubt regarding dimension
+                del_h.append(np.matmul(del_a[len(del_a) - 1], self.weight[i].transpose()))
+                del_a.append(np.multiply(del_h[len(del_h) - 1], gFunction(A[i-1])))
+
+
+
+
+
+
+
