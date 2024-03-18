@@ -25,3 +25,4 @@ config: {}
 2024-03-18 23:59:00,958 INFO    MainThread:81210 [wandb_run.py:_redirect():2161] Wrapping output streams.
 2024-03-18 23:59:00,958 INFO    MainThread:81210 [wandb_run.py:_redirect():2186] Redirects installed.
 2024-03-18 23:59:00,959 INFO    MainThread:81210 [wandb_init.py:init():847] run started, returning control to user process
+2024-03-18 23:59:30,678 WARNING MsgRouterThr:81210 [router.py:message_loop():77] message_loop has been closed

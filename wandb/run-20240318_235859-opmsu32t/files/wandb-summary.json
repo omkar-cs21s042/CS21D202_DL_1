@@ -1,1 +1,1 @@
-{"epoch": 0, "ValAccuracy": 86.46000000000001, "_timestamp": 1710786556.807549, "_runtime": 17.513410091400146, "_step": 0}
+{"epoch": 0, "ValAccuracy": 86.46000000000001, "_timestamp": 1710786560.578613, "_runtime": 21.28447413444519, "_step": 2, "TestAccuracy": 86.44200000000001, "_wandb": {"runtime": 19}}

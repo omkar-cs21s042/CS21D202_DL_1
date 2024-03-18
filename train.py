@@ -587,7 +587,7 @@ parameter_dict = {
 
 sweep_config['parameters']=parameter_dict
 
-wandb.login(key='cde058aec9fb3aa0969d0fed93fde24ac1017aa1')
+wandb.login(key='')
 
 
 

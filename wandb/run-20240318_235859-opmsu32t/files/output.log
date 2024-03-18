@@ -1,0 +1,14 @@
+epoch = 0
+ValAccuracy = 86.46000000000001
+Traceback (most recent call last):
+  File "/Users/omkar/deep_learning/CS21D202_DL_1/train.py", line 642, in <module>
+    wandb.log({"conf_mat" : wandb.plot.confusion_matrix(probs=None,
+  File "/Users/omkar/Library/Python/3.9/lib/python/site-packages/wandb/plot/confusion_matrix.py", line 63, in confusion_matrix
+    assert max(preds) <= len(
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+Traceback (most recent call last):
+  File "/Users/omkar/deep_learning/CS21D202_DL_1/train.py", line 642, in <module>
+    wandb.log({"conf_mat" : wandb.plot.confusion_matrix(probs=None,
+  File "/Users/omkar/Library/Python/3.9/lib/python/site-packages/wandb/plot/confusion_matrix.py", line 63, in confusion_matrix
+    assert max(preds) <= len(
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
