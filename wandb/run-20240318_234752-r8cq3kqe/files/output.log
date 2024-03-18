@@ -1,0 +1,10 @@
+epoch = 0
+ValAccuracy = 86.61666666666666
+Traceback (most recent call last):
+  File "/Users/omkar/deep_learning/CS21D202_DL_1/train.py", line 606, in model_train_wandb
+    model.train()
+  File "/Users/omkar/deep_learning/CS21D202_DL_1/train.py", line 389, in train
+    self.sgd()
+  File "/Users/omkar/deep_learning/CS21D202_DL_1/train.py", line 176, in sgd
+    A, h, op = model.feedForward(x_test, y_test, self.weight, self.bias)
+NameError: name 'model' is not defined

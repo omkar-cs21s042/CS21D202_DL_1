@@ -1,0 +1,10 @@
+epoch = 0
+ValAccuracy = 86.22000000000001
+Traceback (most recent call last):
+  File "/Users/omkar/deep_learning/CS21D202_DL_1/train.py", line 643, in <module>
+    y_true=y_test, preds=output_test,
+NameError: name 'output_test' is not defined
+Traceback (most recent call last):
+  File "/Users/omkar/deep_learning/CS21D202_DL_1/train.py", line 643, in <module>
+    y_true=y_test, preds=output_test,
+NameError: name 'output_test' is not defined

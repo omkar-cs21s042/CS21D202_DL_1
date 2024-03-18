@@ -1,0 +1,18 @@
+epoch = 0
+ValAccuracy = 86.81
+Traceback (most recent call last):
+  File "/Users/omkar/deep_learning/CS21D202_DL_1/train.py", line 635, in <module>
+    model.train()
+  File "/Users/omkar/deep_learning/CS21D202_DL_1/train.py", line 389, in train
+    self.sgd()
+  File "/Users/omkar/deep_learning/CS21D202_DL_1/train.py", line 176, in sgd
+    A, h, op = model.feedForward(x_test, y_test, self.weight, self.bias)
+TypeError: feedForward() takes 4 positional arguments but 5 were given
+Traceback (most recent call last):
+  File "/Users/omkar/deep_learning/CS21D202_DL_1/train.py", line 635, in <module>
+    model.train()
+  File "/Users/omkar/deep_learning/CS21D202_DL_1/train.py", line 389, in train
+    self.sgd()
+  File "/Users/omkar/deep_learning/CS21D202_DL_1/train.py", line 176, in sgd
+    A, h, op = model.feedForward(x_test, y_test, self.weight, self.bias)
+TypeError: feedForward() takes 4 positional arguments but 5 were given

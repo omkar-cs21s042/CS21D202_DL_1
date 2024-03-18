@@ -1,0 +1,28 @@
+epoch = 0
+ValAccuracy = 86.17666666666666
+epoch = 1
+ValAccuracy = 86.63666666666667
+epoch = 2
+ValAccuracy = 86.98333333333333
+epoch = 3
+ValAccuracy = 87.24000000000001
+epoch = 4
+ValAccuracy = 87.18333333333334
+epoch = 5
+ValAccuracy = 87.33000000000001
+epoch = 6
+ValAccuracy = 87.45333333333333
+epoch = 7
+ValAccuracy = 87.49666666666667
+epoch = 8
+ValAccuracy = 87.37
+epoch = 9
+ValAccuracy = 87.50666666666666
+Traceback (most recent call last):
+  File "/Users/omkar/deep_learning/CS21D202_DL_1/train.py", line 606, in model_train_wandb
+    model.train()
+  File "/Users/omkar/deep_learning/CS21D202_DL_1/train.py", line 389, in train
+    self.sgd()
+  File "/Users/omkar/deep_learning/CS21D202_DL_1/train.py", line 176, in sgd
+    A, h, op = model.feedForward(x_test, y_test, self.weight, self.bias)
+NameError: name 'model' is not defined

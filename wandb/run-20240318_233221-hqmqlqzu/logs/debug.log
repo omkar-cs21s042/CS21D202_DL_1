@@ -1,0 +1,20 @@
+2024-03-18 23:32:21,635 INFO    MainThread:80271 [wandb_setup.py:_flush():76] Current SDK version is 0.16.4
+2024-03-18 23:32:21,635 INFO    MainThread:80271 [wandb_setup.py:_flush():76] Configure stats pid to 80271
+2024-03-18 23:32:21,635 INFO    MainThread:80271 [wandb_setup.py:_flush():76] Loading settings from /Users/omkar/.config/wandb/settings
+2024-03-18 23:32:21,635 INFO    MainThread:80271 [wandb_setup.py:_flush():76] Loading settings from /Users/omkar/deep_learning/CS21D202_DL_1/wandb/settings
+2024-03-18 23:32:21,635 INFO    MainThread:80271 [wandb_setup.py:_flush():76] Loading settings from environment variables: {'project': 'myprojectname', 'entity': 'omkard', 'root_dir': '/Users/omkar/deep_learning/CS21D202_DL_1', 'sweep_id': 'pa4cmd8v', 'run_id': 'hqmqlqzu', 'sweep_param_path': '/Users/omkar/deep_learning/CS21D202_DL_1/wandb/sweep-pa4cmd8v/config-hqmqlqzu.yaml'}
+2024-03-18 23:32:21,635 INFO    MainThread:80271 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-03-18 23:32:21,635 INFO    MainThread:80271 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'train.py', 'program_abspath': '/Users/omkar/deep_learning/CS21D202_DL_1/train.py', 'program': '/Users/omkar/deep_learning/CS21D202_DL_1/train.py'}
+2024-03-18 23:32:21,635 INFO    MainThread:80271 [wandb_init.py:_log_setup():526] Logging user logs to /Users/omkar/deep_learning/CS21D202_DL_1/wandb/run-20240318_233221-hqmqlqzu/logs/debug.log
+2024-03-18 23:32:21,635 INFO    MainThread:80271 [wandb_init.py:_log_setup():527] Logging internal logs to /Users/omkar/deep_learning/CS21D202_DL_1/wandb/run-20240318_233221-hqmqlqzu/logs/debug-internal.log
+2024-03-18 23:32:21,635 INFO    MainThread:80271 [wandb_init.py:init():566] calling init triggers
+2024-03-18 23:32:21,635 INFO    MainThread:80271 [wandb_init.py:init():573] wandb.init called with sweep_config: {'activation': 'relu', 'batch_size': 16, 'epochs': 10, 'h_layers': 5, 'learning_rate': 0.001, 'neurons': 128, 'optimizer': 'sgd'}
+config: {}
+2024-03-18 23:32:21,635 INFO    MainThread:80271 [wandb_init.py:init():611] wandb.init() called when a run is still active
+2024-03-18 23:32:21,637 INFO    Thread-4  :80271 [wandb_run.py:_finish():1970] finishing run omkard/myprojectname/hqmqlqzu
+2024-03-18 23:32:21,637 INFO    Thread-4  :80271 [wandb_run.py:_atexit_cleanup():2210] got exitcode: 1
+2024-03-18 23:32:21,637 INFO    Thread-4  :80271 [wandb_run.py:_restore():2193] restore
+2024-03-18 23:32:21,637 INFO    Thread-4  :80271 [wandb_run.py:_restore():2199] restore done
+2024-03-18 23:32:27,405 INFO    Thread-4  :80271 [wandb_run.py:_footer_history_summary_info():3851] rendering history
+2024-03-18 23:32:27,406 INFO    Thread-4  :80271 [wandb_run.py:_footer_history_summary_info():3883] rendering summary
+2024-03-18 23:32:27,413 INFO    Thread-4  :80271 [wandb_run.py:_footer_sync_info():3810] logging synced files

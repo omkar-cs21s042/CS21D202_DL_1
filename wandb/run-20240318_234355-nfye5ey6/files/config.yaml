@@ -1,0 +1,54 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    python_version: 3.9.6
+    cli_version: 0.16.4
+    framework: keras
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1710785635.0
+    t:
+      1:
+      - 2
+      - 3
+      - 5
+      - 53
+      - 55
+      2:
+      - 2
+      - 3
+      - 5
+      - 53
+      - 55
+      3:
+      - 23
+      - 37
+      4: 3.9.6
+      5: 0.16.4
+      8:
+      - 4
+      - 5
+      13: darwin-arm64
+activation:
+  desc: null
+  value: relu
+batch_size:
+  desc: null
+  value: 16
+epochs:
+  desc: null
+  value: 1
+h_layers:
+  desc: null
+  value: 5
+learning_rate:
+  desc: null
+  value: 0.001
+neurons:
+  desc: null
+  value: 128
+optimizer:
+  desc: null
+  value: sgd

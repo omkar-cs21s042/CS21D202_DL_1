@@ -1,0 +1,34 @@
+2024-03-18 23:58:33,533 INFO    Thread-4  :81210 [wandb_setup.py:_flush():76] Current SDK version is 0.16.4
+2024-03-18 23:58:33,533 INFO    Thread-4  :81210 [wandb_setup.py:_flush():76] Configure stats pid to 81210
+2024-03-18 23:58:33,533 INFO    Thread-4  :81210 [wandb_setup.py:_flush():76] Loading settings from /Users/omkar/.config/wandb/settings
+2024-03-18 23:58:33,533 INFO    Thread-4  :81210 [wandb_setup.py:_flush():76] Loading settings from /Users/omkar/deep_learning/CS21D202_DL_1/wandb/settings
+2024-03-18 23:58:33,533 INFO    Thread-4  :81210 [wandb_setup.py:_flush():76] Loading settings from environment variables: {'project': 'myprojectname', 'entity': 'omkard', 'root_dir': '/Users/omkar/deep_learning/CS21D202_DL_1', 'sweep_id': 'qs4jccid', 'run_id': 'opmsu32t', 'sweep_param_path': '/Users/omkar/deep_learning/CS21D202_DL_1/wandb/sweep-qs4jccid/config-opmsu32t.yaml'}
+2024-03-18 23:58:33,533 INFO    Thread-4  :81210 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-03-18 23:58:33,533 INFO    Thread-4  :81210 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'train.py', 'program_abspath': '/Users/omkar/deep_learning/CS21D202_DL_1/train.py', 'program': '/Users/omkar/deep_learning/CS21D202_DL_1/train.py'}
+2024-03-18 23:58:33,533 INFO    Thread-4  :81210 [wandb_init.py:_log_setup():526] Logging user logs to /Users/omkar/deep_learning/CS21D202_DL_1/wandb/run-20240318_235833-opmsu32t/logs/debug.log
+2024-03-18 23:58:33,533 INFO    Thread-4  :81210 [wandb_init.py:_log_setup():527] Logging internal logs to /Users/omkar/deep_learning/CS21D202_DL_1/wandb/run-20240318_235833-opmsu32t/logs/debug-internal.log
+2024-03-18 23:58:33,534 INFO    Thread-4  :81210 [wandb_init.py:init():566] calling init triggers
+2024-03-18 23:58:33,534 INFO    Thread-4  :81210 [wandb_init.py:init():573] wandb.init called with sweep_config: {'activation': 'relu', 'batch_size': 16, 'epochs': 1, 'h_layers': 5, 'learning_rate': 0.001, 'neurons': 128, 'optimizer': 'sgd'}
+config: {}
+2024-03-18 23:58:33,534 INFO    Thread-4  :81210 [wandb_init.py:init():616] starting backend
+2024-03-18 23:58:33,534 INFO    Thread-4  :81210 [wandb_init.py:init():620] setting up manager
+2024-03-18 23:58:33,537 INFO    Thread-4  :81210 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=spawn,fork,forkserver, using: spawn
+2024-03-18 23:58:33,538 INFO    Thread-4  :81210 [wandb_init.py:init():628] backend started and connected
+2024-03-18 23:58:33,545 INFO    Thread-4  :81210 [wandb_run.py:_config_callback():1343] config_cb None None {'activation': 'relu', 'batch_size': 16, 'epochs': 1, 'h_layers': 5, 'learning_rate': 0.001, 'neurons': 128, 'optimizer': 'sgd'}
+2024-03-18 23:58:33,548 INFO    Thread-4  :81210 [wandb_init.py:init():720] updated telemetry
+2024-03-18 23:58:33,561 INFO    Thread-4  :81210 [wandb_init.py:init():753] communicating run to backend with 90.0 second timeout
+2024-03-18 23:58:34,377 INFO    Thread-4  :81210 [wandb_run.py:_on_init():2262] communicating current version
+2024-03-18 23:58:34,454 INFO    Thread-4  :81210 [wandb_run.py:_on_init():2271] got version response 
+2024-03-18 23:58:34,454 INFO    Thread-4  :81210 [wandb_init.py:init():804] starting run threads in backend
+2024-03-18 23:58:34,555 INFO    Thread-4  :81210 [wandb_run.py:_console_start():2241] atexit reg
+2024-03-18 23:58:34,555 INFO    Thread-4  :81210 [wandb_run.py:_redirect():2096] redirect: wrap_raw
+2024-03-18 23:58:34,555 INFO    Thread-4  :81210 [wandb_run.py:_redirect():2161] Wrapping output streams.
+2024-03-18 23:58:34,555 INFO    Thread-4  :81210 [wandb_run.py:_redirect():2186] Redirects installed.
+2024-03-18 23:58:34,556 INFO    Thread-4  :81210 [wandb_init.py:init():847] run started, returning control to user process
+2024-03-18 23:58:54,198 INFO    Thread-4  :81210 [wandb_run.py:_finish():1970] finishing run omkard/myprojectname/opmsu32t
+2024-03-18 23:58:54,198 INFO    Thread-4  :81210 [wandb_run.py:_atexit_cleanup():2210] got exitcode: 0
+2024-03-18 23:58:54,198 INFO    Thread-4  :81210 [wandb_run.py:_restore():2193] restore
+2024-03-18 23:58:54,198 INFO    Thread-4  :81210 [wandb_run.py:_restore():2199] restore done
+2024-03-18 23:58:59,111 INFO    Thread-4  :81210 [wandb_run.py:_footer_history_summary_info():3851] rendering history
+2024-03-18 23:58:59,111 INFO    Thread-4  :81210 [wandb_run.py:_footer_history_summary_info():3883] rendering summary
+2024-03-18 23:58:59,118 INFO    Thread-4  :81210 [wandb_run.py:_footer_sync_info():3810] logging synced files

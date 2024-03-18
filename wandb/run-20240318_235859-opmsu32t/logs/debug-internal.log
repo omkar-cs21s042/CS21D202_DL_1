@@ -1,0 +1,51 @@
+2024-03-18 23:59:00,117 INFO    StreamThr :81227 [internal.py:wandb_internal():86] W&B internal server running at pid: 81227, started at: 2024-03-18 23:59:00.116406
+2024-03-18 23:59:00,118 DEBUG   HandlerThread:81227 [handler.py:handle_request():146] handle_request: status
+2024-03-18 23:59:00,120 INFO    WriterThread:81227 [datastore.py:open_for_write():87] open: /Users/omkar/deep_learning/CS21D202_DL_1/wandb/run-20240318_235859-opmsu32t/run-opmsu32t.wandb
+2024-03-18 23:59:00,121 DEBUG   SenderThread:81227 [sender.py:send():378] send: header
+2024-03-18 23:59:00,121 DEBUG   SenderThread:81227 [sender.py:send():378] send: run
+2024-03-18 23:59:00,775 INFO    SenderThread:81227 [dir_watcher.py:__init__():211] watching files in: /Users/omkar/deep_learning/CS21D202_DL_1/wandb/run-20240318_235859-opmsu32t/files
+2024-03-18 23:59:00,776 INFO    SenderThread:81227 [sender.py:_start_run_threads():1099] run started: opmsu32t with start time 1710786539.294139
+2024-03-18 23:59:00,794 DEBUG   HandlerThread:81227 [handler.py:handle_request():146] handle_request: check_version
+2024-03-18 23:59:00,795 DEBUG   SenderThread:81227 [sender.py:send_request():405] send_request: check_version
+2024-03-18 23:59:00,865 DEBUG   HandlerThread:81227 [handler.py:handle_request():146] handle_request: run_start
+2024-03-18 23:59:00,866 DEBUG   HandlerThread:81227 [system_info.py:__init__():26] System info init
+2024-03-18 23:59:00,866 DEBUG   HandlerThread:81227 [system_info.py:__init__():41] System info init done
+2024-03-18 23:59:00,866 INFO    HandlerThread:81227 [system_monitor.py:start():194] Starting system monitor
+2024-03-18 23:59:00,866 INFO    SystemMonitor:81227 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-03-18 23:59:00,866 INFO    HandlerThread:81227 [system_monitor.py:probe():214] Collecting system info
+2024-03-18 23:59:00,866 INFO    SystemMonitor:81227 [interfaces.py:start():190] Started cpu monitoring
+2024-03-18 23:59:00,868 DEBUG   HandlerThread:81227 [system_info.py:probe():150] Probing system
+2024-03-18 23:59:00,868 INFO    SystemMonitor:81227 [interfaces.py:start():190] Started disk monitoring
+2024-03-18 23:59:00,872 INFO    SystemMonitor:81227 [interfaces.py:start():190] Started gpuapple monitoring
+2024-03-18 23:59:00,880 INFO    SystemMonitor:81227 [interfaces.py:start():190] Started memory monitoring
+2024-03-18 23:59:00,881 INFO    SystemMonitor:81227 [interfaces.py:start():190] Started network monitoring
+2024-03-18 23:59:00,881 DEBUG   HandlerThread:81227 [system_info.py:_probe_git():135] Probing git
+2024-03-18 23:59:00,901 DEBUG   HandlerThread:81227 [system_info.py:_probe_git():143] Probing git done
+2024-03-18 23:59:00,901 DEBUG   HandlerThread:81227 [system_info.py:probe():198] Probing system done
+2024-03-18 23:59:00,902 DEBUG   HandlerThread:81227 [system_monitor.py:probe():223] {'os': 'macOS-12.5.1-arm64-arm-64bit', 'python': '3.9.6', 'heartbeatAt': '2024-03-18T18:29:00.868448', 'startedAt': '2024-03-18T18:28:59.285289', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/Users/omkar/deep_learning/CS21D202_DL_1/train.py', 'codePathLocal': 'train.py', 'codePath': 'train.py', 'git': {'remote': 'git@github.com:omkar-cs21s042/CS21D202_DL_1.git', 'commit': 'c9b68e3303880156c9a946d3345518cba8777cf7'}, 'email': 'cs21s042@smail.iitm.ac.in', 'root': '/Users/omkar/deep_learning/CS21D202_DL_1', 'host': 'Omkars-MacBook-Air.local', 'username': 'omkar', 'executable': '/Library/Developer/CommandLineTools/usr/bin/python3', 'cpu_count': 8, 'cpu_count_logical': 8, 'cpu_freq': {'current': 3204, 'min': 600, 'max': 3204}, 'cpu_freq_per_core': [{'current': 3204, 'min': 600, 'max': 3204}], 'disk': {'/': {'total': 228.27386474609375, 'used': 14.368236541748047}}, 'gpuapple': {'type': 'arm', 'vendor': 'Apple'}, 'memory': {'total': 8.0}}
+2024-03-18 23:59:00,902 INFO    HandlerThread:81227 [system_monitor.py:probe():224] Finished collecting system info
+2024-03-18 23:59:00,902 INFO    HandlerThread:81227 [system_monitor.py:probe():227] Publishing system info
+2024-03-18 23:59:00,902 INFO    HandlerThread:81227 [system_monitor.py:probe():229] Finished publishing system info
+2024-03-18 23:59:00,903 DEBUG   SenderThread:81227 [sender.py:send():378] send: files
+2024-03-18 23:59:00,903 INFO    SenderThread:81227 [sender.py:_save_file():1365] saving file wandb-metadata.json with policy now
+2024-03-18 23:59:00,958 DEBUG   HandlerThread:81227 [handler.py:handle_request():146] handle_request: python_packages
+2024-03-18 23:59:00,958 DEBUG   SenderThread:81227 [sender.py:send_request():405] send_request: python_packages
+2024-03-18 23:59:00,959 DEBUG   SenderThread:81227 [sender.py:send():378] send: telemetry
+2024-03-18 23:59:00,959 DEBUG   HandlerThread:81227 [handler.py:handle_request():146] handle_request: internal_messages
+2024-03-18 23:59:00,959 DEBUG   HandlerThread:81227 [handler.py:handle_request():146] handle_request: stop_status
+2024-03-18 23:59:00,959 DEBUG   SenderThread:81227 [sender.py:send_request():405] send_request: stop_status
+2024-03-18 23:59:01,781 INFO    Thread-25 :81227 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/omkar/deep_learning/CS21D202_DL_1/wandb/run-20240318_235859-opmsu32t/files/wandb-metadata.json
+2024-03-18 23:59:01,781 INFO    Thread-25 :81227 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/omkar/deep_learning/CS21D202_DL_1/wandb/run-20240318_235859-opmsu32t/files/requirements.txt
+2024-03-18 23:59:01,997 INFO    wandb-upload_0:81227 [upload_job.py:push():131] Uploaded file /var/folders/_w/4w4x7prn23l61klhvr58ykvh0000gn/T/tmppu9re1y7wandb/fv2imbfq-wandb-metadata.json
+2024-03-18 23:59:05,340 DEBUG   HandlerThread:81227 [handler.py:handle_request():146] handle_request: status_report
+2024-03-18 23:59:10,361 DEBUG   HandlerThread:81227 [handler.py:handle_request():146] handle_request: status_report
+2024-03-18 23:59:15,385 DEBUG   HandlerThread:81227 [handler.py:handle_request():146] handle_request: status_report
+2024-03-18 23:59:15,963 DEBUG   HandlerThread:81227 [handler.py:handle_request():146] handle_request: internal_messages
+2024-03-18 23:59:15,963 DEBUG   HandlerThread:81227 [handler.py:handle_request():146] handle_request: stop_status
+2024-03-18 23:59:15,963 DEBUG   SenderThread:81227 [sender.py:send_request():405] send_request: stop_status
+2024-03-18 23:59:16,807 DEBUG   HandlerThread:81227 [handler.py:handle_request():146] handle_request: partial_history
+2024-03-18 23:59:16,808 DEBUG   SenderThread:81227 [sender.py:send():378] send: history
+2024-03-18 23:59:16,808 DEBUG   SenderThread:81227 [sender.py:send_request():405] send_request: summary_record
+2024-03-18 23:59:16,808 INFO    SenderThread:81227 [sender.py:_save_file():1365] saving file wandb-summary.json with policy end
+2024-03-18 23:59:16,855 INFO    Thread-25 :81227 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/omkar/deep_learning/CS21D202_DL_1/wandb/run-20240318_235859-opmsu32t/files/wandb-summary.json
+2024-03-18 23:59:16,855 INFO    Thread-25 :81227 [dir_watcher.py:_on_file_created():271] file/dir created: /Users/omkar/deep_learning/CS21D202_DL_1/wandb/run-20240318_235859-opmsu32t/files/output.log
